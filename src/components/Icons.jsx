@@ -1,30 +1,3 @@
-# SPORTSEE
-
-## Section 1: Project folder Structure
-
-### 1. Create Project
-
-- create `Soprtsee` Project using [vitejs](https://vitejs.dev/).
-
-```bash
-npm create vite@latest sportsee
-```
-
-- install dependencies
-
-```bash
-$ npm i axios react-query sass react-router-dom classnames lucide-react
-```
-
-- add `mocked data` in [mockedData](src/data/mockedData.js)
-
-## Section 2: Compononents
-
-### 2. Icons
-
-- create [Icons](src/components/Icons.jsx)
-
-```jsx
 export const Icons = {
   calories: (props) => (
     <svg
@@ -268,32 +241,3 @@ export const Icons = {
     </svg>
   ),
 };
-```
-
-### 3.
-
-### 4.
-
-### 5.
-
-### 6.
-
-### 7.
-
-### 8.
-
-### 9.
-
-### 10.
-
-### 11.
-
-### 12.
-
-### 13.
-
-### 14.
-
-### 15.
-
-### 16.
