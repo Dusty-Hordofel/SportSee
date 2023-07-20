@@ -270,9 +270,81 @@ export const Icons = {
 };
 ```
 
-### 3.
+### 3. Navbar
 
-### 4.
+- create [NavMenu](src/components/navbar/NavMenu.jsx)
+
+```jsx
+import React from "react";
+import { Link } from "react-router-dom";
+
+const NavMenu = () => {
+  return (
+    <nav>
+      <ul>
+        <li>
+          <Link href="/">Accueil</Link>
+        </li>
+        <li>
+          <Link href="/profil">Profil</Link>
+        </li>
+        <li>
+          <Link href="/reglage">Réglage</Link>
+        </li>
+        <li>
+          <Link href="/communaute">Communauté</Link>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default NavMenu;
+```
+
+- create [Logo](src/components/navbar/Logo.jsx)
+
+```jsx
+import { Icons } from "../Icons";
+import { Link } from "react-router-dom";
+
+const Logo = () => {
+  return (
+    <>
+      <Link href="/" className="flex gap-2 items-center">
+        <Icons.logo />
+      </Link>
+    </>
+  );
+};
+
+export default Logo;
+```
+
+- create [Navbar](src/components/navbar/Navbar.jsx)
+
+```jsx
+import React from "react";
+import NavMenu from "./NavMenu";
+import Logo from "./Logo";
+
+const Navbar = () => {
+  return (
+    <>
+      <header>
+        <Logo />
+        <NavMenu />
+      </header>
+    </>
+  );
+};
+
+export default Navbar;
+```
+
+### 4. Sass folder structure
+
+- create [styles](src/styles) folder structure
 
 ### 5.
 
