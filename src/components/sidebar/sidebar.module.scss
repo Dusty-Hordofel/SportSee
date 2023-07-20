@@ -1,0 +1,9 @@
+@import "/src/styles/main.scss";
+
+.sidebar {
+  background: black;
+  @include flex(column, center, center);
+  height: calc(100vh - 9.1rem);
+  width: 11.7rem;
+  gap: 20px;
+}

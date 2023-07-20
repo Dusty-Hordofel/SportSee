@@ -2,6 +2,7 @@ import React from "react";
 import NavMenu from "./NavMenu";
 import Logo from "./Logo";
 import styles from "./navbar.module.scss";
+import Sidebar from "../sidebar/Sidebar";
 
 const Navbar = () => {
   return (
@@ -12,6 +13,7 @@ const Navbar = () => {
           <NavMenu />
         </div>
       </header>
+      <Sidebar />
     </>
   );
 };

@@ -6,23 +6,39 @@ const NavMenu = () => {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.navigationList}>
-        <li className={styles.navigationItem}>
-          <a href="/" className={styles.navigationLink}>
+        <li
+          className={styles.navigationItem}
+          aria-label="Cliquez sur Accueil pour vous rendre sur la page d'accueil"
+          tabIndex={0}
+        >
+          <Link to="/" className={styles.navigationLink}>
             Accueil
-          </a>
+          </Link>
         </li>
-        <li className={styles.navigationItem}>
-          <Link href="/profil" className={styles.navigationLink}>
+        <li
+          className={styles.navigationItem}
+          aria-label="Cliquez sur Profil pour vous rendre sur la page Profil"
+          tabIndex={0}
+        >
+          <Link to="/profil" className={styles.navigationLink}>
             Profil
           </Link>
         </li>
-        <li className={styles.navigationItem}>
-          <Link href="/reglage" className={styles.navigationLink}>
+        <li
+          className={styles.navigationItem}
+          aria-label="Cliquez sur Réglage pour vous rendre sur la page Réglage"
+          tabIndex={0}
+        >
+          <Link to="/reglage" className={styles.navigationLink}>
             Réglage
           </Link>
         </li>
-        <li className={styles.navigationItem}>
-          <Link href="/communaute" className={styles.navigationLink}>
+        <li
+          className={styles.navigationItem}
+          aria-label="Cliquez sur Communauté pour vous rendre sur la page Communauté"
+          tabIndex={0}
+        >
+          <Link to="/communaute" className={styles.navigationLink}>
             Communauté
           </Link>
         </li>

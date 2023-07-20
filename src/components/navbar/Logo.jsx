@@ -4,11 +4,15 @@ import styles from "./navbar.module.scss";
 
 const Logo = () => {
   return (
-    <>
-      <Link href="/" className="flex gap-2 items-center">
+    <div
+      className={styles.logo}
+      aria-label="Cliquez sur le logo pour vous rendre sur la page d'accueil"
+      tabIndex={0}
+    >
+      <Link to="/">
         <Icons.logo />
       </Link>
-    </>
+    </div>
   );
 };
 

@@ -1,16 +1,20 @@
-import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFound from "./pages/notFound/NotFound";
+import Profil from "./pages/profil/Profil";
+import Reglage from "./pages/reglage/Reglage";
+import Communaute from "./pages/communaute/Communaute";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navbar />} />
-          {/* <Route path="/profil" element={<Profil/>} />
-          <Route path="/reglage" element={<About data={accordionData} />} />
-          <Route path="/communaute" element={<About data={accordionData} />} /> */}
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/profil" element={<Profil />} />
+          <Route path="/reglage" element={<Reglage />} />
+          <Route path="/communaute" element={<Communaute />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -346,7 +346,69 @@ export default Navbar;
 
 - create [styles](src/styles) folder structure
 
-### 5.
+### 5. Sidebar
+
+- create [Sidebar](src/components/sidebar/Sidebar.jsx)
+
+```jsx
+import { Link } from "react-router-dom";
+import { Icons } from "../Icons";
+import styles from "./sidebar.module.scss";
+
+const Sidebar = () => {
+  return (
+    <aside className={styles.sidebar}>
+      {/* Ajoutez les attributs aria-label aux éléments Link contenant les icônes */}
+      <Link
+        to="/"
+        aria-label="Cliquez sur l'icon Yoga pour avoir des informations sur vos activités de Yoga"
+        tabIndex={0}
+      >
+        <Icons.yoga />
+      </Link>
+      <Link
+        to="/"
+        aria-label="Cliquez sur l'icon Swim pour avoir des informations sur vos activités de Swim"
+        tabIndex={0}
+      >
+        <Icons.swim />
+      </Link>
+      <Link
+        to="/"
+        aria-label="Cliquez sur l'icon Bike pour avoir des informations sur vos activités de Bike"
+        tabIndex={0}
+      >
+        <Icons.bike />
+      </Link>
+      <Link
+        to="/"
+        aria-label="Cliquez sur l'icon Fitness pour avoir des informations sur vos activités de Fitness"
+        tabIndex={0}
+      >
+        <Icons.fitness />
+      </Link>
+    </aside>
+  );
+};
+
+export default Sidebar;
+```
+
+- style [sidebar](src/components/sidebar/sidebar.module.scss)
+
+```scss
+@import "/src/styles/main.scss";
+
+.sidebar {
+  background: black;
+  @include flex(column, center, center);
+  height: calc(100vh - 9.1rem);
+  width: 11.7rem;
+  gap: 20px;
+}
+```
+
+- create [Communaute](src/pages/communaute/Communaute.jsx),[](src/pages/notFound/NotFound.jsx),[Profil](src/pages/profil/Profil.jsx),[Reglage](src/pages/reglage/Reglage.jsx) and [Home](src/pages/home/Home.jsx) pages
 
 ### 6.
 
