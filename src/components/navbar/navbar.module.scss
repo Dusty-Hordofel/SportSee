@@ -1,0 +1,43 @@
+@import "/src/styles/main.scss";
+
+header {
+  background: black;
+  height: 9.1rem;
+  display: flex;
+  align-items: center;
+  .headerElements {
+    width: 100%;
+    gap: 14.9rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    .logo {
+      margin-left: 28px; //1.458vw;
+      display: flex;
+      align-items: center;
+    }
+    .navigation {
+      color: white;
+      margin-right: 5vw;
+      .navigationList {
+        width: 100%;
+        @include flex(row, space-between, center);
+        height: 100%;
+        .navigationItem {
+          & a {
+            text-decoration: none;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.container {
+  display: flex;
+  .children {
+    flex: 1;
+    padding: 5rem 10rem;
+  }
+}

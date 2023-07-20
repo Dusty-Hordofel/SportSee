@@ -1,0 +1,25 @@
+@import "/src/styles/main.scss";
+
+.sidebar {
+  background: black;
+  @include flex(column, center, center);
+  height: calc(100vh - 9.1rem);
+  width: 11.7rem;
+  gap: 16.4rem;
+
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .copiryght {
+    transform: rotate(-90deg);
+    font-size: 9px;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import "/src/styles/main.scss";
+
+.links {
+  display: flex;
+  gap: 2rem;
+  .link {
+    background: $sportsee-primary-black;
+    width: fit-content;
+    padding: 2rem;
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+    color: white;
+  }
+}
