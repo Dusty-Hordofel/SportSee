@@ -37,7 +37,7 @@ header {
 .container {
   display: flex;
   .children {
-    background: red;
     flex: 1;
+    padding: 5rem 10rem;
   }
 }

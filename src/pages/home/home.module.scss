@@ -1,1 +1,16 @@
 @import "/src/styles/main.scss";
+
+h1 {
+  font-size: 4.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2.4rem;
+  margin-bottom: 5rem;
+  .sportsee {
+    color: $sportsee-primary-red;
+  }
+}
+
+.choice {
+  padding-bottom: 30px;
+}
