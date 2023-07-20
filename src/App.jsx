@@ -8,15 +8,15 @@ import Home from "./pages/home/Home";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profil" element={<Profil />} />
-          <Route path="/reglage" element={<Reglage />} />
-          <Route path="/communaute" element={<Communaute />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      {/* <BrowserRouter> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profil" element={<Profil />} />
+        <Route path="/reglage" element={<Reglage />} />
+        <Route path="/communaute" element={<Communaute />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      {/* </BrowserRouter> */}
     </>
   );
 }

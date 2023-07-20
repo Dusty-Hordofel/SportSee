@@ -410,7 +410,41 @@ export default Sidebar;
 
 - create [Communaute](src/pages/communaute/Communaute.jsx),[](src/pages/notFound/NotFound.jsx),[Profil](src/pages/profil/Profil.jsx),[Reglage](src/pages/reglage/Reglage.jsx) and [Home](src/pages/home/Home.jsx) pages
 
-### 6.
+### 6. Layout
+
+- create [Layout](src/components/layout/Layout.jsx)
+
+```jsx
+import Navbar from "../navbar/Navbar";
+import styles from "./layout.module.scss";
+const Layout = ({ children }) => {
+  return (
+    <div className={styles.layout}>
+      <Navbar />
+      <div className={styles.children}>{children}</div>
+    </div>
+  );
+};
+
+export default Layout;
+```
+
+- style [Layout](src/components/layout/layout.module.scss)
+
+```scss
+@import "/src/styles/main.scss";
+
+.layout {
+  //   display: flex;
+  .children {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 9.1rem);
+    width: 100vh;
+  }
+}
+```
 
 ### 7.
 

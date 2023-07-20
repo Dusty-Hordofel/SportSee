@@ -1,0 +1,12 @@
+@import "/src/styles/main.scss";
+
+.layout {
+  //   display: flex;
+  .children {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 9.1rem);
+    width: 100vh;
+  }
+}
