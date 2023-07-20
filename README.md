@@ -449,6 +449,8 @@ export default Layout;
 
 - install [react-wrap-balancer](https://react-wrap-balancer.vercel.app/)
 
+- [Users](src/components/users/Users.jsx)
+
 ```js
 import React from "react";
 import { USER_MAIN_DATA } from "../../data/mockedData";
@@ -476,7 +478,129 @@ const Users = () => {
 export default Users;
 ```
 
-### 8.
+### 8. User Page
+
+- add [backend](backend) folder
+- install [prop-types](https://www.npmjs.com/package/prop-types)
+
+- create [Title](src/components/title/Title.jsx)
+
+```jsx
+import PropTypes from "prop-types";
+import ClapIcon from "../../assets/IconClap.png";
+import { Icons } from "../Icons";
+
+function Title({ id, firstname }) {
+  return (
+    <div className="titleWrap">
+      <div className="nameWrap">
+        Bonjour
+        <div key={id} className="titleName">
+          {firstname}
+        </div>
+      </div>
+      <div className="titleCongrats">
+        Félicitation ! Vous avez explosé vos objectifs hier <Icons.ClapIcon />
+      </div>
+    </div>
+  );
+}
+
+Title.propTypes = {
+  id: PropTypes.number.isRequired,
+  firstname: PropTypes.string.isRequired,
+};
+
+export default Title;
+```
+
+- create [api](src/api/user/index.js)
+
+```js
+import axios from "axios";
+const API_BASE_URL = "http://localhost:3008";
+
+const getUsersData = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+const getUserData = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+
+export { getUsersData, getUserData };
+```
+
+- create [User](src/pages/user/User.jsx) page
+
+```js
+import React, { useEffect, useState } from "react";
+import Title from "../../components/Title/Title";
+import { useNavigate, useParams } from "react-router-dom";
+import { USER_MAIN_DATA } from "../../data/mockedData";
+import { getUserData } from "../../api/user";
+import styles from "./user.module.scss";
+import { useQuery } from "@tanstack/react-query";
+// import { BASE_URL } from "../../config/Config";
+// import { API_BASE_URL } from "../../config/Config";
+
+const User = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["userData", id],
+    queryFn: () => getUserData(id),
+  });
+  console.log("🚀 ~ file: User.jsx:27 ~ User ~ data:", data);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>'Erreur lors du chargement des données utilisateur'.</div>;
+  }
+  //Old way to fetch data
+  //   const [userData, setUserData] = useState();
+  //   const [isLoading, setIsLoading] = useState(true);
+  //   useEffect(() => {
+  //     setIsLoading(true);
+  //     getUserData(id).then((responseData) => {
+  //       setUserData(responseData.data);
+  //       setIsLoading(false);
+  //     });
+  //   }, []);
+  //   return <>{isLoading ? <div>Loading...</div> : <h2>{userData.id}</h2>}</>;
+
+  return (
+    <>
+      <h1>
+        Bonjour{" "}
+        <span className={styles.title}>{data.data.userInfos.firstName}</span>
+      </h1>
+      <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+    </>
+  );
+};
+
+export default User;
+```
 
 ### 9.
 
@@ -493,3 +617,7 @@ export default Users;
 ### 15.
 
 ### 16.
+
+## External link
+
+- [prop-types](https://www.npmjs.com/package/prop-types)

@@ -5,6 +5,7 @@ import styles from "./home.module.scss";
 import Balancer from "react-wrap-balancer";
 import { USER_MAIN_DATA } from "../../data/mockedData";
 import Users from "../../components/users/Users";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -21,8 +22,11 @@ const Home = () => {
       </h1>
       <p>
         {/* <Balancer> */}
-        Projet 12 de la formation de développeur front-end d'OpenClassRoom,
-        cette démo met en avant le tableau de bord d'un utilisateur de
+        Projet 12 de la formation de développeur front-end d'
+        <span className={styles.openclassrooms}>
+          <Link to={"https://openclassrooms.com/fr/"}>OpenClassRoom</Link>
+        </span>
+        , cette démo met en avant le tableau de bord d'un utilisateur de
         l'application SportSee, une startup dédiée au coaching sportif.
         L’entreprise va aujourd’hui lancer une nouvelle version de la page
         profil de l’utilisateur. Cette page va notamment permettre à
