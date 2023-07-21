@@ -24,4 +24,16 @@ const getUserData = async (id) => {
   }
 };
 
-export { getUsersData, getUserData };
+const getUserActivityData = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+
+export { getUsersData, getUserData, getUserActivityData };

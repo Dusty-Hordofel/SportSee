@@ -1,0 +1,28 @@
+@import "/src/styles/main.scss";
+
+.activityChart {
+  background: #fbfbfb;
+  width: fit-content;
+  padding: 2.4rem;
+  position: relative;
+  .activityLegend {
+    font-size: 1.5rem;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  position: absolute;
+  // font-size: 15px;
+  // font-weight: 500;
+  margin: 0;
+  top: 30px;
+  left: 30px;
+}
+
+// .activityLegendColor {
+//   color: #74798c;
+//   font-size: 14px;
+//   font-weight: 500;
+// }
