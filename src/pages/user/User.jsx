@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import Title from "../../components/Title/Title";
 import { useNavigate, useParams } from "react-router-dom";
 import { USER_MAIN_DATA } from "../../data/mockedData";
-import { getUserActivityData, getUserData } from "../../api/user";
+import {
+  getUserActivityData,
+  getUserData,
+  getuserAverageSession,
+  getuserPerformance,
+} from "../../api/user";
 import styles from "./user.module.scss";
 import { useQuery } from "@tanstack/react-query";
 import ActivityChart from "../../components/Charts/ActivityChart/ActivityChart";
+import AverageSession from "../../components/Charts/AverageSession/AverageSession";
 // import { BASE_URL } from "../../config/Config";
 // import { API_BASE_URL } from "../../config/Config";
 
@@ -29,13 +35,42 @@ const User = () => {
     queryKey: ["userActivityData", id],
     queryFn: async () => getUserActivityData(id),
   });
-
   console.log(
-    "🚀 ~ file: User.jsx:26 ~ User ~ userActivityData:",
+    "🚀 ~ file: User.jsx:32 ~ User ~ userActivityData:",
     userActivityData
   );
 
-  console.log("🚀 ~ file: User.jsx:27 ~ User ~ userData:", userData);
+  const {
+    data: userAverageSession,
+    isLoading: isUserAverageSessionLoading,
+    isError: userAverageSessionError,
+  } = useQuery({
+    queryKey: ["userAverageSession", id],
+    queryFn: async () => getuserAverageSession(id),
+  });
+
+  console.log(
+    "🚀 ~ file: User.jsx:42 ~ User ~ userAverageSession:",
+    userAverageSession
+  );
+
+  // console.log(
+  //   "🚀 ~ file: User.jsx:41 ~ User ~ userAverageSession:",
+  //   userAverageSession
+  // );
+
+  const {
+    data: userPerformance,
+    isLoading: isUserPerformance,
+    isError: userPerformanceError,
+  } = useQuery({
+    queryKey: ["userPerformance", id],
+    queryFn: async () => getuserPerformance(id),
+  });
+  // console.log(
+  //   "🚀 ~ file: User.jsx:49 ~ User ~ userPerformance:",
+  //   userPerformance
+  // );
 
   if (isUserLoading) {
     return <div>Loading...</div>;
@@ -69,6 +104,7 @@ const User = () => {
       </p>
       <div>
         <ActivityChart userActivityData={userActivityData} />
+        <AverageSession userAverageSession={userAverageSession} />
       </div>
     </>
   );

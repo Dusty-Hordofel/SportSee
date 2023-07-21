@@ -36,4 +36,35 @@ const getUserActivityData = async (id) => {
   }
 };
 
-export { getUsersData, getUserData, getUserActivityData };
+const getuserAverageSession = async (id) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/user/${id}/average-sessions`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+
+const getuserPerformance = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+export {
+  getUsersData,
+  getUserData,
+  getUserActivityData,
+  getuserAverageSession,
+  getuserPerformance,
+};

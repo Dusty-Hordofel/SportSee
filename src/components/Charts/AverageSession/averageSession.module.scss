@@ -1,0 +1,17 @@
+@import "/src/styles/main.scss";
+
+.averageSession {
+  background: $sportsee-primary-red;
+  width: fit-content;
+  padding: 2.4rem;
+  position: relative;
+  .title {
+    // background: #fbfbfb;
+    // color: $sportsee-white;
+    color: #fff;
+    font-size: 1.5rem;
+    width: fit-content;
+    padding: 2.4rem;
+    position: relative;
+  }
+}

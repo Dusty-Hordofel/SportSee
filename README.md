@@ -610,7 +610,17 @@ export default User;
 - create [getUserActivityData](src/api/user/index.js)
 
 ```js
-
+const getUserActivityData = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
 ```
 
 - create [ActivityChart](src/components/Charts/ActivityChart/ActivityChart.jsx)
@@ -713,7 +723,133 @@ const ActivityChart = ({ userActivityData }) => {
 export default ActivityChart;
 ```
 
-### 10.
+### 10. Average Session
+
+- create [getuserAverageSession,getuserPerformance](src/api/user/index.js)
+
+```js
+const getuserAverageSession = async (id) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/user/${id}/average-sessions`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+
+const getuserPerformance = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+```
+
+- create [AverageSession](src/components/Charts/AverageSession/AverageSession.jsx)
+
+```js
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Line,
+  LineChart,
+} from "recharts";
+import PropTypes from "prop-types";
+import styles from "./AverageSession.module.scss";
+
+const xAxisFormatter = (day) => {
+  switch (day) {
+    case 1:
+      return "L";
+    case 2:
+      return "M";
+    case 3:
+      return "M";
+    case 4:
+      return "J";
+    case 5:
+      return "V";
+    case 6:
+      return "S";
+    case 7:
+      return "D";
+    default:
+      return "";
+  }
+};
+const AverageSession = ({ userAverageSession }) => {
+  console.log(
+    "🚀 ~ file: AverageSession.jsx:13 ~ AverageSession ~ userAverageSession:",
+    userAverageSession
+  );
+  const { sessions } = userAverageSession.data;
+  console.log(
+    "🚀 ~ file: AverageSession.jsx:18 ~ AverageSession ~ sessions:",
+    sessions
+  );
+
+  return (
+    <div className={styles.averageSession}>
+      <h1 className={styles.title}>Durée moyenne des sessions</h1>
+      <LineChart
+        width={730}
+        height={250}
+        data={sessions}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid horizontal={false} vertical={false} />
+
+        <YAxis
+          // dataKey="sessionLength"
+          hide="true"
+          domain={["dataMin", "dataMax"]}
+        />
+        <XAxis
+          dataKey="day"
+          type="category"
+          axisLine={false}
+          tickLine={false}
+          tick={{ fontSize: 12, fontWeight: 500 }}
+          tickFormatter={xAxisFormatter}
+          stroke="rgba(255, 255, 255, 0.5)"
+          tickMargin={40}
+        />
+        <Tooltip />
+        <Legend />
+        <Line
+          dataKey="sessionLength"
+          type="natural"
+          stroke="#FFFFFF"
+          dot={false}
+          strokeWidth={2}
+        />
+        {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
+      </LineChart>
+    </div>
+  );
+};
+
+export default AverageSession;
+
+AverageSession.prototype = {
+  userAverageSession: PropTypes.object.isRequired,
+};
+```
+
+### 11.
 
 - create []()
 
@@ -721,7 +857,11 @@ export default ActivityChart;
 
 ```
 
-### 11.
+- create []()
+
+```js
+
+```
 
 ### 12.
 

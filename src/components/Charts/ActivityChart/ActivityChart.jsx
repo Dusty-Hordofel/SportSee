@@ -12,6 +12,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./ActivityChart.module.scss";
+import PropTypes from "prop-types";
+
 const xAxisTickFormat = (value) => {
   const valueDay = value.split("-");
 
@@ -93,3 +95,7 @@ const ActivityChart = ({ userActivityData }) => {
 };
 
 export default ActivityChart;
+
+ActivityChart.propTypes = {
+  userActivityData: PropTypes.object.isRequired,
+};
