@@ -14,8 +14,8 @@ const getUsersData = async () => {
 };
 const getUserData = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/user/${id}`);
-    return response.data;
+    const { data } = await axios.get(`${API_BASE_URL}/user/${id}`);
+    return data;
   } catch (error) {
     console.log(
       "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
@@ -26,8 +26,8 @@ const getUserData = async (id) => {
 
 const getUserActivityData = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
-    return response.data;
+    const { data } = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
+    return data;
   } catch (error) {
     console.log(
       "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
@@ -36,12 +36,12 @@ const getUserActivityData = async (id) => {
   }
 };
 
-const getuserAverageSession = async (id) => {
+const getUserAverageSession = async (id) => {
   try {
-    const response = await axios.get(
+    const { data } = await axios.get(
       `${API_BASE_URL}/user/${id}/average-sessions`
     );
-    return response.data;
+    return data;
   } catch (error) {
     console.log(
       "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
@@ -50,10 +50,10 @@ const getuserAverageSession = async (id) => {
   }
 };
 
-const getuserPerformance = async (id) => {
+const getUserPerformance = async (id) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
-    return response.data;
+    const { data } = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
+    return data;
   } catch (error) {
     console.log(
       "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
@@ -65,6 +65,6 @@ export {
   getUsersData,
   getUserData,
   getUserActivityData,
-  getuserAverageSession,
-  getuserPerformance,
+  getUserAverageSession,
+  getUserPerformance,
 };

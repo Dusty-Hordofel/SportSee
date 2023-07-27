@@ -14,3 +14,11 @@ h1 {
 .message {
   margin-bottom: 10rem;
 }
+
+.NutritionCards {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-bottom: 10rem;
+  width: 25.8rem;
+}

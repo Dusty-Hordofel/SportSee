@@ -15,21 +15,20 @@ import styles from "./ActivityChart.module.scss";
 import PropTypes from "prop-types";
 
 const xAxisTickFormat = (value) => {
-  const valueDay = value.split("-");
-
-  return Number(valueDay[2]);
+  return new Date(value).getDate();
 };
+// const xAxisTickFormat = (value) => {
+//   const valueDay = value.split("-");
+//   return Number(valueDay[2]);
+// };
 
 const ActivityChart = ({ userActivityData }) => {
   console.log(
     "🚀 ~ file: ActivityChart.jsx:14 ~ ActivityChart ~ userActivityData:",
-    userActivityData.data.sessions
+    userActivityData
   );
-  const { sessions } = userActivityData.data;
-  console.log(
-    "🚀 ~ file: ActivityChart.jsx:19 ~ ActivityChart ~ sessions:",
-    sessions
-  );
+  const { sessions } = userActivityData;
+  const formatYAxisTick = (value) => (value === 0 ? "" : value); // Supprime le zéro
 
   return (
     <div className={styles.activityChart}>
@@ -44,21 +43,32 @@ const ActivityChart = ({ userActivityData }) => {
             height={1}
             horizontalPoints={[90, 185]}
           />
+
+          <CartesianGrid strokeDasharray="3" vertical={false} />
           <XAxis
             dataKey="day"
-            tickFormatter={xAxisTickFormat}
+            // tickFormatter={xAxisTickFormat}
+            tickFormatter={(day) => xAxisTickFormat(day)}
+            tickLine={false}
+            tick={{ fill: "#9B9EAC" }}
+            stroke="#DEDEDE"
+            strokeWidth={2}
+            tickMargin={16}
             // tickSize="0"
-            // interval="preserveStartEnd"
+            interval="preserveStartEnd"
             // tickMargin="25"
-            stroke="#9B9EAC"
+            // stroke="#9B9EAC"
           />
           <YAxis
+            dataKey="kilogram"
             axisLine={false}
             orientation="right"
             type="number"
             tickSize="0"
             tickMargin="30"
             stroke="#9B9EAC"
+            allowDataOverflow={true}
+            // formatter={formatYAxisTick}
             // width={50}
           />
           <Tooltip />
