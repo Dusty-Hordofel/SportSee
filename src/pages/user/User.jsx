@@ -15,6 +15,7 @@ import {
   useFetchUserPerformance,
 } from "../../hooks/reactQueryCustomHooks";
 import { Icons } from "../../components/Icons";
+import ScoreChart from "../../components/Charts/score/ScoreChart";
 
 const User = () => {
   const navigate = useNavigate();
@@ -81,35 +82,44 @@ const User = () => {
         Félicitation ! Vous avez explosé vos objectifs hier 👏
       </p>
       <div>
-        <div>
-          <ActivityChart userActivityData={userActivityData} />
-          <AverageSession userAverageSession={userAverageSession} />
-          <Performance userPerformance={userPerformance} />
-          <div className={styles.NutritionCards}>
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.calories}
-              keyDataSwitch={[userData.keyData.calorieCount, "kCal"]}
-              keyDataType="Calories"
-            />
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.protein}
-              keyDataSwitch={[userData.keyData.proteinCount, "g"]}
-              keyDataType="Proteines"
-            />
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.carbs}
-              keyDataSwitch={[userData.keyData.carbohydrateCount, "g"]}
-              keyDataType="Glucides"
-            />
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.fat}
-              keyDataSwitch={[userData.keyData.lipidCount, "g"]}
-              keyDataType="Lipides"
-            />
+        <div className={styles.parts}>
+          <div className={styles.leftPart}>
+            <div className={styles.one}>
+              <ActivityChart userActivityData={userActivityData} />
+            </div>
+            <div className={styles.two}>
+              <AverageSession userAverageSession={userAverageSession} />
+              <Performance userPerformance={userPerformance} />
+              <ScoreChart userData={userData} />
+            </div>
+          </div>
+          <div className={styles.rightPart}>
+            <div className={styles.NutritionCards}>
+              <NutritionCard
+                id={userData.id}
+                Icon={Icons.calories}
+                keyDataSwitch={[userData.keyData.calorieCount, "kCal"]}
+                keyDataType="Calories"
+              />
+              <NutritionCard
+                id={userData.id}
+                Icon={Icons.protein}
+                keyDataSwitch={[userData.keyData.proteinCount, "g"]}
+                keyDataType="Proteines"
+              />
+              <NutritionCard
+                id={userData.id}
+                Icon={Icons.carbs}
+                keyDataSwitch={[userData.keyData.carbohydrateCount, "g"]}
+                keyDataType="Glucides"
+              />
+              <NutritionCard
+                id={userData.id}
+                Icon={Icons.fat}
+                keyDataSwitch={[userData.keyData.lipidCount, "g"]}
+                keyDataType="Lipides"
+              />
+            </div>
           </div>
         </div>
       </div>

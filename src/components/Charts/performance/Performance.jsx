@@ -33,18 +33,20 @@ const Performance = ({ userPerformance }) => {
 
   return (
     <div className={styles.performance}>
-      <RadarChart outerRadius={90} width={730} height={250} data={data}>
-        <PolarGrid radialLines={false} />
-        <PolarAngleAxis
-          dataKey="kind"
-          tickLine={false}
-          tick={{ fontSize: 12, fontWeight: 500 }}
-          stroke="#FFFFFF"
-          tickFormatter={xAxisFormatter}
-        />
-        <Radar dataKey="value" fill="#FF0101B2" />
-        <Legend />
-      </RadarChart>
+      <ResponsiveContainer width="100%" height="100%">
+        <RadarChart outerRadius={90} width={730} height={250} data={data}>
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis
+            dataKey="kind"
+            tickLine={false}
+            tick={{ fontSize: 12, fontWeight: 500 }}
+            stroke="#FFFFFF"
+            tickFormatter={xAxisFormatter}
+          />
+          <Radar dataKey="value" fill="#FF0101B2" />
+          <Legend />
+        </RadarChart>
+      </ResponsiveContainer>
     </div>
   );
 };

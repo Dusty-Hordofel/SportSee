@@ -6,6 +6,7 @@ import {
   Legend,
   Line,
   LineChart,
+  ResponsiveContainer,
 } from "recharts";
 import PropTypes from "prop-types";
 import styles from "./AverageSession.module.scss";
@@ -33,43 +34,46 @@ const xAxisFormatter = (day) => {
 const AverageSession = ({ userAverageSession }) => {
   const { sessions } = userAverageSession;
   return (
-    <div className={styles.averageSession}>
-      <h1 className={styles.title}>Durée moyenne des sessions</h1>
-      <LineChart
-        width={730}
-        height={250}
-        data={sessions}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-      >
-        <CartesianGrid horizontal={false} vertical={false} />
+    // <div className={styles.averageSession}>
+    <>
+      {/* <h1 className={styles.title}>Durée moyenne des sessions</h1> */}
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          width={730}
+          height={250}
+          data={sessions}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+          <CartesianGrid horizontal={false} vertical={false} />
 
-        <YAxis
-          // dataKey="sessionLength"
-          hide="true"
-          domain={["dataMin", "dataMax"]}
-        />
-        <XAxis
-          dataKey="day"
-          type="category"
-          axisLine={false}
-          tickLine={false}
-          tick={{ fontSize: 12, fontWeight: 500 }}
-          tickFormatter={xAxisFormatter}
-          stroke="rgba(255, 255, 255, 0.5)"
-          tickMargin={40}
-        />
-        <Tooltip />
-        <Legend />
-        <Line
-          dataKey="sessionLength"
-          type="natural"
-          stroke="#FFFFFF"
-          dot={false}
-          strokeWidth={2}
-        />
-        {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
-      </LineChart>
-    </div>
+          <YAxis
+            // dataKey="sessionLength"
+            hide="true"
+            domain={["dataMin", "dataMax"]}
+          />
+          <XAxis
+            dataKey="day"
+            type="category"
+            axisLine={false}
+            tickLine={false}
+            tick={{ fontSize: 12, fontWeight: 500 }}
+            tickFormatter={xAxisFormatter}
+            stroke="rgba(255, 255, 255, 0.5)"
+            tickMargin={40}
+          />
+          <Tooltip />
+          <Legend />
+          <Line
+            dataKey="sessionLength"
+            type="natural"
+            stroke="#FFFFFF"
+            dot={false}
+            strokeWidth={2}
+          />
+          {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
+        </LineChart>
+      </ResponsiveContainer>
+    </>
   );
 };
 

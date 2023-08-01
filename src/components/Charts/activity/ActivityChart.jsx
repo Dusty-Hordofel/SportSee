@@ -32,10 +32,16 @@ const ActivityChart = ({ userActivityData }) => {
 
   return (
     <div className={styles.activityChart}>
-      <h1 className={styles.title}>Activité quotidienne </h1>
       {/* <ResponsiveContainer width="100%" height="100%"> */}
-      <div style={{ width: "100%", height: "100%" }}>
-        <BarChart width={730} height={250} data={sessions}>
+      <h1 className={styles.title}>Activité quotidienne </h1>
+      {/* <ResponsiveContainer
+        width="100%"
+        height="100%"
+        
+      > */}
+      {/* style={{ width: "100%", height: "100%" }} */}
+      <div className={styles.activityContent}>
+        <BarChart width={890} height={320} data={sessions}>
           {/* <CartesianGrid horizontal={false} vertical={false} /> */}
           <CartesianGrid
             vertical="false"
@@ -99,6 +105,7 @@ const ActivityChart = ({ userActivityData }) => {
           />
         </BarChart>
       </div>
+      {/* </ResponsiveContainer> */}
       {/* </ResponsiveContainer> */}
     </div>
   );

@@ -71,7 +71,7 @@ export const useFetchUserPerformance = (id) => {
     queryKey: ["userPerformance", id],
     queryFn: async () => {
       const { data } = await getUserPerformance(id);
-      const { data: donees, kind } = data;
+      // const { data: donees, kind } = data;
       return data;
     },
   });
