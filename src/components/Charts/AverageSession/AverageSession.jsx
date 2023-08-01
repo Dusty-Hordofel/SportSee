@@ -32,7 +32,16 @@ const xAxisFormatter = (day) => {
   }
 };
 const AverageSession = ({ userAverageSession }) => {
-  const { sessions } = userAverageSession;
+  console.log(
+    "🚀 ~ file: AverageSession.jsx:13 ~ AverageSession ~ userAverageSession:",
+    userAverageSession
+  );
+  const { sessions } = userAverageSession.data;
+  console.log(
+    "🚀 ~ file: AverageSession.jsx:18 ~ AverageSession ~ sessions:",
+    sessions
+  );
+
   return (
     // <div className={styles.averageSession}>
     <>
