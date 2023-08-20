@@ -1,5 +1,18 @@
 @import "/src/styles/main.scss";
 
+.charts {
+  display: flex;
+
+  .leftCharts {
+    display: flex;
+    flex-direction: column;
+    .bottomChart {
+      // display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
 h1 {
   font-size: 4.8rem;
   font-style: normal;

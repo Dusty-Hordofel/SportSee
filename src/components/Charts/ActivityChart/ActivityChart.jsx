@@ -15,21 +15,22 @@ import styles from "./ActivityChart.module.scss";
 import PropTypes from "prop-types";
 
 const xAxisTickFormat = (value) => {
-  const valueDay = value.split("-");
+  // const valueDay = value.split("-");
 
-  return Number(valueDay[2]);
+  // return Number(valueDay[2]);
+  return new Date(value).getDate();
 };
 
 const ActivityChart = ({ userActivityData }) => {
-  console.log(
-    "🚀 ~ file: ActivityChart.jsx:14 ~ ActivityChart ~ userActivityData:",
-    userActivityData.data.sessions
-  );
-  const { sessions } = userActivityData.data;
-  console.log(
-    "🚀 ~ file: ActivityChart.jsx:19 ~ ActivityChart ~ sessions:",
-    sessions
-  );
+  // console.log(
+  //   "🚀 ~ file: ActivityChart.jsx:14 ~ ActivityChart ~ userActivityData:",
+  //   userActivityData
+  // );
+  const { sessions } = userActivityData;
+  // console.log(
+  //   "🚀 ~ file: ActivityChart.jsx:19 ~ ActivityChart ~ sessions:",
+  //   sessions
+  // );
 
   return (
     <div className={styles.activityChart}>
@@ -44,21 +45,30 @@ const ActivityChart = ({ userActivityData }) => {
       <div className={styles.activityContent}>
         <BarChart width={890} height={320} data={sessions}>
           {/* <CartesianGrid horizontal={false} vertical={false} /> */}
-          <CartesianGrid
+          {/* <CartesianGrid
             vertical="false"
             strokeDasharray="3"
             height={1}
             horizontalPoints={[90, 185]}
-          />
+          /> */}
+          <CartesianGrid strokeDasharray="3" vertical={false} />
           <XAxis
             dataKey="day"
-            tickFormatter={xAxisTickFormat}
+            // tickFormatter={xAxisTickFormat}
             // tickSize="0"
             // interval="preserveStartEnd"
             // tickMargin="25"
-            stroke="#9B9EAC"
+            tickFormatter={(day) => xAxisTickFormat(day)}
+            tickLine={false}
+            tick={{ fill: "#9B9EAC" }}
+            stroke="#DEDEDE"
+            strokeWidth={2}
+            tickMargin={16}
+            interval="preserveStartEnd"
+            // stroke="#9B9EAC"
           />
           <YAxis
+            dataKey="kilogram"
             axisLine={false}
             orientation="right"
             type="number"
@@ -66,6 +76,7 @@ const ActivityChart = ({ userActivityData }) => {
             tickMargin="30"
             stroke="#9B9EAC"
             // width={50}
+            allowDataOverflow={true}
           />
           <Tooltip />
           <Legend

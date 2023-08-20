@@ -1,47 +1,13 @@
-@import "/src/styles/main.scss";
-
 .scoreChart {
   position: relative;
   background-color: #fbfbfb;
   display: flex;
-  align-items: center;
   justify-content: center;
   border-radius: 5px;
   width: 32%;
   height: 263px;
-  .score {
-    position: absolute;
-    top: 10%;
-    left: 132px;
-    width: 200px;
-    border-radius: 50%;
-    background: yellow;
-    height: 200px;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    .scoreResult {
-      text-align: center;
-      font-size: 40px;
-      font-weight: 500;
-      color: #282d30;
-      margin: 0;
-      font-size: 2.6rem;
-    }
-  }
 }
 
-// .scoreWrapper {
-//   width: 45%;
-//   height: 100%;
-//   // height: "250px";
-//   background: yellow;
-//   // width: fit-content;
-//   // height: fit-content;
-//   // background: red;
-// }
 .scoreChartTitle {
   position: absolute;
   font-size: 15px;
@@ -51,16 +17,97 @@
   left: 20px;
 }
 
-// .scoreChartWrap {
-//   height: 100%;
-//   width: 100%;
+.scoreChartWrap {
+  height: 100%;
+  width: 100%;
 
-//   .scoreText {
-//     font-size: 16px;
-//     font-weight: 500;
-//     color: #74798c;
-//     text-align: center;
+  .score {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    margin: 0;
+  }
+
+  .scoreText {
+    font-size: 16px;
+    font-weight: 500;
+    color: #74798c;
+    text-align: center;
+    margin: 0;
+  }
+
+  .scoreResult {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #282d30;
+    margin: 0;
+  }
+}
+
+// @import "/src/styles/main.scss";
+
+// .scoreChart {
+//   position: relative;
+//   background-color: #fbfbfb;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 5px;
+//   width: 32%;
+//   height: 263px;
+//   .score {
+//     position: absolute;
+//     top: 10%;
+//     left: 132px;
+//     width: 200px;
+//     border-radius: 50%;
+//     background: yellow;
+//     height: 200px;
 //     margin: 0;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     flex-direction: column;
+//     .scoreResult {
+//       text-align: center;
+//       font-size: 40px;
+//       font-weight: 500;
+//       color: #282d30;
+//       margin: 0;
+//       font-size: 2.6rem;
+//     }
 //   }
-
 // }
+
+// // .scoreWrapper {
+// //   width: 45%;
+// //   height: 100%;
+// //   // height: "250px";
+// //   background: yellow;
+// //   // width: fit-content;
+// //   // height: fit-content;
+// //   // background: red;
+// // }
+// .scoreChartTitle {
+//   position: absolute;
+//   font-size: 15px;
+//   font-weight: 500;
+//   margin: 0;
+//   top: 20px;
+//   left: 20px;
+// }
+
+// // .scoreChartWrap {
+// //   height: 100%;
+// //   width: 100%;
+
+// //   .scoreText {
+// //     font-size: 16px;
+// //     font-weight: 500;
+// //     color: #74798c;
+// //     text-align: center;
+// //     margin: 0;
+// //   }
+
+// // }

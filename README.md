@@ -849,17 +849,72 @@ AverageSession.prototype = {
 };
 ```
 
-### 11.
+### 11. NutritionCard
 
-- create []()
+- create [nutritionCard](src/components/Charts/nutritionCard/NutritionCard.jsx)
 
 ```js
+import PropTypes from "prop-types";
+// import { Icons } from "../../Icons";
+import styles from "./nutritionCard.module.scss";
 
+function NutritionCard({ id, Icon, keyDataSwitch, keyDataType }) {
+  return (
+    <div className={styles.nutritionCard} key={id}>
+      <Icon />
+      <div className={styles.nutritionCardText}>
+        <div className={styles.nutritionCardKeyData}>{keyDataSwitch}</div>
+        <div className={styles.nutritionCardKeyType}>{keyDataType}</div>
+      </div>
+    </div>
+  );
+}
+
+NutritionCard.propTypes = {
+  icon: PropTypes.string.isRequired,
+  keyDataSwitch: PropTypes.array.isRequired,
+  keyDataType: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};
+
+export default NutritionCard;
 ```
 
-- create []()
+- style [nutritionCard](src/components/Charts/nutritionCard/nutritionCard.module.scss)
 
 ```js
+.nutritionCard {
+  background-color: #fbfbfb;
+  gap: 2.4rem;
+  padding: 8%;
+  display: flex;
+  width: 100%;
+  height: 12.4rem;
+  border-radius: 0.5rem;
+}
+
+.nutritionCardIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.nutritionCardText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.nutritionCardKeyData {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nutritionCardKeyType {
+  font-weight: 500;
+  font-size: 14px;
+}
 
 ```
 
