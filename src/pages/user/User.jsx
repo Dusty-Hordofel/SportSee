@@ -21,6 +21,7 @@ import AverageSession from "../../components/Charts/AverageSession/AverageSessio
 import Performance from "../../components/Charts/performance/Performance";
 import NutritionCard from "../../components/Charts/nutritionCard/NutritionCard";
 import { Icons } from "../../components/Icons";
+import ScoreChart from "../../components/Charts/score/ScoreChart";
 // import ActivityChart from "../../components/Charts/activity/ActivityChart";
 // import Performance from "../../components/Charts/performance/Performance";
 // import AverageSession from "../../components/Charts/session/AverageSession";
@@ -49,30 +50,8 @@ const User = () => {
   const { id } = useParams();
 
   const { userData, userError, isUserLoading } = useFetchUserData(id);
-  // console.log("🚀 ~ file: User.jsx:23 ~ User ~ userData:", userData);
   const { userActivityData, isUserActivityLoading, userActivityError } =
     useFetchUserActivityData(id);
-
-  // const {
-  //   data: userData,
-  //   isLoading: userError,
-  //   isError: isUserLoading,
-  // } = useQuery({
-  //   queryKey: ["userData", id],
-  //   queryFn: async () => getUserData(id),
-  // });
-  // const {
-  //   data: userActivityData,
-  //   isLoading: isUserActivityLoading,
-  //   isError: userActivityError,
-  // } = useQuery({
-  //   queryKey: ["userActivityData", id],
-  //   queryFn: async () => getUserActivityData(id),
-  // });
-  // console.log(
-  //   "🚀 ~ file: User.jsx:32 ~ User ~ userActivityData:",
-  //   userActivityData
-  // );
 
   const {
     userAverageSession,
@@ -82,10 +61,6 @@ const User = () => {
 
   const { userPerformance, isUserPerformance, userPerformanceError } =
     useFetchUserPerformance(id);
-  // console.log(
-  //   "🚀 ~ file: User.jsx:39 ~ User ~ userPerformance:",
-  //   userPerformance
-  // );
 
   if (
     isUserLoading ||
@@ -162,6 +137,7 @@ const User = () => {
           <div className={styles.bottomChart}>
             <AverageSession userAverageSession={userAverageSession} />
             <Performance userPerformance={userPerformance} />
+            <ScoreChart userData={userData} />
           </div>
         </div>
         <div className={styles.NutritionCards}>
@@ -191,39 +167,6 @@ const User = () => {
           />
         </div>
       </div>
-      {/* <div>
-        <div>
-          <ActivityChart userActivityData={userActivityData} /> */}
-      {/* <AverageSession userAverageSession={userAverageSession} /> */}
-      {/* <Performance userPerformance={userPerformance} /> */}
-      {/* <div className={styles.NutritionCards}>
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.calories}
-              keyDataSwitch={[userData.keyData.calorieCount, "kCal"]}
-              keyDataType="Calories"
-            />
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.protein}
-              keyDataSwitch={[userData.keyData.proteinCount, "g"]}
-              keyDataType="Proteines"
-            />
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.carbs}
-              keyDataSwitch={[userData.keyData.carbohydrateCount, "g"]}
-              keyDataType="Glucides"
-            />
-            <NutritionCard
-              id={userData.id}
-              Icon={Icons.fat}
-              keyDataSwitch={[userData.keyData.lipidCount, "g"]}
-              keyDataType="Lipides"
-            />
-          </div> */}
-      {/* </div>
-      </div> */}
     </>
   );
 };

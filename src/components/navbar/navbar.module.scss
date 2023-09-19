@@ -1,9 +1,12 @@
 @import "/src/styles/main.scss";
 
 header {
+  position: fixed;
   background: black;
   height: 9.1rem;
-  display: flex;
+  width: 100%;
+  z-index: 30;
+  // display: flex;
   align-items: center;
   .headerElements {
     width: 100%;
@@ -36,6 +39,10 @@ header {
 
 .container {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 200px 100px 300px;
+  // background: yellow;
   .children {
     flex: 1;
     padding: 5rem 10rem;

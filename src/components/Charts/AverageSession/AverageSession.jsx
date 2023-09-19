@@ -7,6 +7,7 @@ import {
   Line,
   LineChart,
   ResponsiveContainer,
+  Rectangle,
 } from "recharts";
 import PropTypes from "prop-types";
 import styles from "./AverageSession.module.scss";
@@ -34,10 +35,10 @@ const xAxisFormatter = (day) => {
 const AverageSession = ({ userAverageSession }) => {
   const { sessions } = userAverageSession;
 
-  console.log(
-    "🚀 ~ file: AverageSession.jsx:36 ~ AverageSession ~ sessions:",
-    sessions
-  );
+  // console.log(
+  //   "🚀 ~ file: AverageSession.jsx:36 ~ AverageSession ~ sessions:",
+  //   sessions
+  // );
 
   const CustomToolTypeSessionDuration = ({ payload, active }) => {
     if (active) {
@@ -72,11 +73,32 @@ const AverageSession = ({ userAverageSession }) => {
     sessionWrap.style.background = "transparent";
   }
 
+  const CustomCursor = ({ points }) => {
+    return (
+      <Rectangle
+        fill="#000000"
+        opacity={0.2}
+        x={points[1].x}
+        width={1000}
+        height={300}
+        className={styles.rectangle}
+      />
+    );
+  };
+
+  //   function CustomToolTypeSessionDuration({payload, active}){
+  //     if(active){
+  //         return (
+  //             <div className='sessionDurationChartTooltip'>
+  //                 <div>{`${payload[0].value}`}min</div>
+  //             </div>
+  //         )
+  //     }
+  //     return null
+  // }
+
   return (
-    // <div className={styles.averageSession}>
     <div className={styles.averageSession}>
-      {/* <h1 className={styles.title}>Durée moyenne des sessions</h1> */}
-      {/* <ResponsiveContainer width="100%" height="100%"> */}
       <LineChart
         width={258}
         height={263}
@@ -89,12 +111,6 @@ const AverageSession = ({ userAverageSession }) => {
         }}
         onMouseMove={(e) => customMouseMove(e)}
         onMouseOut={() => customOnMouseOut()}
-        // margin={{
-        //   top: 5,
-        //   right: 30,
-        //   left: 20,
-        //   bottom: 5,
-        // }}
       >
         <text
           x="15%"
@@ -105,10 +121,7 @@ const AverageSession = ({ userAverageSession }) => {
           fill={COLOR}
         >
           Durée moyenne des sessions
-          {/* <tspan x="15%" y="27%"> */}
-          {/* </tspan> */}
         </text>
-        {/* <CartesianGrid strokeDasharray="3 3" /> */}
         <CartesianGrid horizontal={false} vertical={false} />
         <XAxis
           dataKey="day"
@@ -121,20 +134,12 @@ const AverageSession = ({ userAverageSession }) => {
           tickMargin={40}
         />
         <YAxis hide="true" domain={["dataMin", "dataMax"]} />
-        <Tooltip content={<CustomToolTypeSessionDuration />} cursor={false} />
-        {/* <YAxis /> */}
-        {/* <Tooltip /> */}
-        {/* <Legend /> */}
-        {/* <Line
-          type="monotone"
-          dataKey="sessionLength"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        /> */}
+        <Tooltip
+          content={<CustomToolTypeSessionDuration />}
+          // cursor={false}
+          cursor={<CustomCursor />}
+        />
         <YAxis hide="true" domain={["dataMin", "dataMax"]} />
-        {/* <YAxis hide domain={["dataMin - 15", "dataMax + 10"]} /> */}
-        {/* <Line type="monotone" dataKey="day" stroke="#82ca9d" /> */}
-
         <Line
           dataKey="sessionLength"
           type="natural"
@@ -153,43 +158,3 @@ export default AverageSession;
 AverageSession.prototype = {
   userAverageSession: PropTypes.object.isRequired,
 };
-
-{
-  /* <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          width={730}
-          height={250}
-          data={sessions}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-        >
-          <CartesianGrid horizontal={false} vertical={false} />
-
-          <YAxis
-            // dataKey="sessionLength"
-            hide="true"
-            domain={["dataMin", "dataMax"]}
-          />
-          <XAxis
-            dataKey="day"
-            type="category"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fontSize: 12, fontWeight: 500 }}
-            tickFormatter={xAxisFormatter}
-            stroke="rgba(255, 255, 255, 0.5)"
-            tickMargin={40}
-          />
-          <Tooltip />
-          <Legend />
-          <Line
-            dataKey="sessionLength"
-            type="natural"
-            stroke="#FFFFFF"
-            dot={false}
-            strokeWidth={2}
-          />
-          // <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> 
-        </LineChart>
-      </ResponsiveContainer> 
-    */
-}

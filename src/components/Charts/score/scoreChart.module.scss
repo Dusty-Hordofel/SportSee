@@ -1,13 +1,18 @@
 .scoreChart {
   position: relative;
   background-color: #fbfbfb;
+  // background:  #74798C;
   display: flex;
   justify-content: center;
   border-radius: 5px;
-  width: 32%;
-  height: 263px;
+  position: relative;
+  // width: 32%;
+  // height: 263px;
 }
 
+.scoreBar {
+  background: yellow;
+}
 .scoreChartTitle {
   position: absolute;
   font-size: 15px;
@@ -15,34 +20,62 @@
   margin: 0;
   top: 20px;
   left: 20px;
+  color: red;
+}
+
+// .chart {
+//   z-index: 20;
+//   position: absolute;
+// }
+.score {
+  position: absolute;
+  top: 27.5%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background: white;
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+}
+
+// .scoreItem {
+//   background: green;
+//   width: 200px;
+//   height: 200px;
+// }
+
+.circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: yellow;
+  position: absolute;
+  // top: 0;
+  z-index: -1;
+}
+
+.scoreText {
+  font-size: 16px;
+  font-weight: 500;
+  color: #74798c;
+  text-align: center;
+  margin: 0;
+}
+
+.scoreResult {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #282d30;
+  margin: 0;
 }
 
 .scoreChartWrap {
   height: 100%;
   width: 100%;
-
-  .score {
-    position: absolute;
-    top: 40%;
-    width: 100%;
-    margin: 0;
-  }
-
-  .scoreText {
-    font-size: 16px;
-    font-weight: 500;
-    color: #74798c;
-    text-align: center;
-    margin: 0;
-  }
-
-  .scoreResult {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
-    color: #282d30;
-    margin: 0;
-  }
 }
 
 // @import "/src/styles/main.scss";

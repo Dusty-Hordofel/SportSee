@@ -27,10 +27,10 @@ const ActivityChart = ({ userActivityData }) => {
   //   userActivityData
   // );
   const { sessions } = userActivityData;
-  // console.log(
-  //   "🚀 ~ file: ActivityChart.jsx:19 ~ ActivityChart ~ sessions:",
-  //   sessions
-  // );
+  console.log(
+    "🚀 ~ file: ActivityChart.jsx:19 ~ ActivityChart ~ sessions:",
+    sessions
+  );
 
   return (
     <div className={styles.activityChart}>
@@ -54,10 +54,6 @@ const ActivityChart = ({ userActivityData }) => {
           <CartesianGrid strokeDasharray="3" vertical={false} />
           <XAxis
             dataKey="day"
-            // tickFormatter={xAxisTickFormat}
-            // tickSize="0"
-            // interval="preserveStartEnd"
-            // tickMargin="25"
             tickFormatter={(day) => xAxisTickFormat(day)}
             tickLine={false}
             tick={{ fill: "#9B9EAC" }}
@@ -65,7 +61,6 @@ const ActivityChart = ({ userActivityData }) => {
             strokeWidth={2}
             tickMargin={16}
             interval="preserveStartEnd"
-            // stroke="#9B9EAC"
           />
           <YAxis
             dataKey="kilogram"
@@ -75,7 +70,16 @@ const ActivityChart = ({ userActivityData }) => {
             tickSize="0"
             tickMargin="30"
             stroke="#9B9EAC"
-            // width={50}
+            allowDataOverflow={true}
+          />
+          <YAxis
+            dataKey="calories"
+            axisLine={false}
+            orientation="left"
+            type="number"
+            tickSize="0"
+            tickMargin="30"
+            stroke="#9B9EAC"
             allowDataOverflow={true}
           />
           <Tooltip />

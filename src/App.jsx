@@ -5,11 +5,16 @@ import Reglage from "./pages/reglage/Reglage";
 import Communaute from "./pages/communaute/Communaute";
 import Home from "./pages/home/Home";
 import User from "./pages/user/User";
+import Layout from "./components/layout/Layout";
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <>
       {/* <BrowserRouter> */}
+      {/* <Layout /> */}
+      {/* <Navbar children={children} /> */}
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profil" element={<Profil />} />

@@ -13,9 +13,9 @@ const Navbar = ({ children }) => {
           <Logo />
           <NavMenu />
         </div>
+        <Sidebar />
       </header>
       <div className={styles.container}>
-        <Sidebar />
         <main className={styles.children}>{children}</main>
       </div>
     </>

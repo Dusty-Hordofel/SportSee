@@ -1,10 +1,10 @@
 .nutritionCard {
   background-color: #fbfbfb;
   gap: 2.4rem;
-  padding: 8%;
+  padding: 15%;
   display: flex;
   width: 100%;
-  height: 12.4rem;
+  height: 15.9rem;
   border-radius: 0.5rem;
 }
 
@@ -15,15 +15,18 @@
 
 .nutritionCardText {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  // flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  // align-items: flex-start;
+  // justify-content: space-between;
   padding: 5px;
 }
 
 .nutritionCardKeyData {
   font-weight: 700;
   font-size: 18px;
+  margin-bottom: 20px;
 }
 
 .nutritionCardKeyType {

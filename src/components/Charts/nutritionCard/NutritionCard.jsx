@@ -7,8 +7,10 @@ function NutritionCard({ id, Icon, keyDataSwitch, keyDataType }) {
     <div className={styles.nutritionCard} key={id}>
       <Icon />
       <div className={styles.nutritionCardText}>
-        <div className={styles.nutritionCardKeyData}>{keyDataSwitch}</div>
-        <div className={styles.nutritionCardKeyType}>{keyDataType}</div>
+        <div>
+          <div className={styles.nutritionCardKeyData}>{keyDataSwitch}</div>
+          <div className={styles.nutritionCardKeyType}>{keyDataType}</div>
+        </div>
       </div>
     </div>
   );
