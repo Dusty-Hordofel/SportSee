@@ -6,8 +6,20 @@ import Balancer from "react-wrap-balancer";
 import { USER_MAIN_DATA } from "../../data/mockedData";
 import Users from "../../components/users/Users";
 import { Link } from "react-router-dom";
+import { useFetchUsersData } from "../../hooks/reactQueryCustomHooks";
 
 const Home = () => {
+  const { usersData, usersError, isUsersLoading } = useFetchUsersData();
+  console.log("🚀 ~ file: Home.jsx:13 ~ Home ~ usersData:", usersData);
+
+  if (isUsersLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (usersError) {
+    return <div>'Erreur lors du chargement des données utilisateur'.</div>;
+  }
+
   return (
     <>
       <h1>
@@ -40,7 +52,7 @@ const Home = () => {
       </p>
 
       <div className={styles.users}>
-        <Users />
+        <Users usersData={usersData} />
       </div>
     </>
   );

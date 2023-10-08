@@ -58,6 +58,26 @@ const User = () => {
     return <div>'Erreur lors du chargement des données utilisateur'.</div>;
   }
 
+  // const {
+  //   data: userPerformance,
+  //   isLoading: isUserPerformance,
+  //   isError: userPerformanceError,
+  // } = useQuery({
+  //   queryKey: ["userPerformance", id],
+  //   queryFn: async () => getuserPerformance(id),
+  // });
+  // console.log(
+  //   "🚀 ~ file: User.jsx:49 ~ User ~ userPerformance:",
+  //   userPerformance
+  // );
+
+  // if (isUserLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (userError) {
+  //   return <div>'Erreur lors du chargement des données utilisateur'.</div>;
+  // }
   //Old way to fetch data
   //   const [userData, setUserData] = useState();
   //   const [isLoading, setIsLoading] = useState(true);

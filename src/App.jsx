@@ -1,22 +1,26 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFound from "./pages/notFound/NotFound";
-import Profil from "./pages/profil/Profil";
-import Reglage from "./pages/reglage/Reglage";
-import Communaute from "./pages/communaute/Communaute";
-import Home from "./pages/home/Home";
-import User from "./pages/user/User";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("./pages/home/Home"));
+const User = lazy(() => import("./pages/user/User"));
+const NotFound = lazy(() => import("./pages/notFound/NotFound"));
+const Profil = lazy(() => import("./pages/profil/Profil"));
+const Reglage = lazy(() => import("./pages/reglage/Reglage"));
+const Communaute = lazy(() => import("./pages/communaute/Communaute"));
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/profil" element={<Profil />} />
-        <Route path="/reglage" element={<Reglage />} />
-        <Route path="/communaute" element={<Communaute />} />
-        <Route path="/user/:id" element={<User />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/user/:id" element={<User />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/profil" element={<Profil />} />
+          <Route path="/reglage" element={<Reglage />} />
+          <Route path="/communaute" element={<Communaute />} />
+        </Routes>
+      </Suspense>
     </>
   );
 }
