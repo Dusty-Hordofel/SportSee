@@ -16,10 +16,6 @@ export const useFetchUsersData = () => {
     queryKey: ["usersData"],
     queryFn: async () => {
       const data = await getUsersData();
-      console.log(
-        "🚀 ~ file: reactQueryCustomHooks.jsx:19 ~ queryFn: ~ data:",
-        data
-      );
       return data;
     },
   });

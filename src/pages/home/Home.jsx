@@ -17,7 +17,7 @@ const Home = () => {
   }
 
   if (usersError) {
-    return <div>'Erreur lors du chargement des données utilisateur'.</div>;
+    return <div>Erreur lors du chargement des données utilisateur.</div>;
   }
 
   return (
