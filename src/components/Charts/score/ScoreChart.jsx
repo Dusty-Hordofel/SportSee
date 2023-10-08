@@ -4,11 +4,6 @@ import PropTypes from "prop-types";
 import styles from "./scoreChart.module.scss";
 
 function ScoreChart({ userData }) {
-  console.log(
-    "🚀 ~ file: ScoreChart.jsx:10 ~ ScoreChart ~ dataScore:",
-    userData
-  );
-
   function formatScore(data) {
     if (data.todayScore) {
       data.score = data.todayScore;
@@ -28,7 +23,7 @@ function ScoreChart({ userData }) {
   }
 
   const scorePercentage = calculatePercentage(userData);
-  const radialData = [{ name: "Score", score: userData.score }];
+  // const radialData = [{ name: "Score", score: userData.score }];
   const score = [{ value: userData.score }, { value: 1 - userData.score }];
 
   return (
@@ -39,6 +34,7 @@ function ScoreChart({ userData }) {
         style={{ display: "flex" }}
       >
         <PieChart width={160} height={160}>
+          {/*Pie  presente les données sous forme de secteurs  */}
           <Pie
             data={score}
             dataKey="value"

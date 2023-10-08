@@ -10,8 +10,8 @@ import {
 export const useFetchUserData = (id) => {
   const {
     data: userData,
-    isLoading: userError,
-    isError: isUserLoading,
+    isLoading: isUserLoading,
+    isError: userError,
   } = useQuery({
     queryKey: ["userData", id],
     queryFn: async () => {

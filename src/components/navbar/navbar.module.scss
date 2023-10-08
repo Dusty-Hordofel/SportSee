@@ -18,11 +18,16 @@ header {
       margin-left: 28px; //1.458vw;
       display: flex;
       align-items: center;
+      position: relative;
+      top: 15px;
     }
     .navigation {
+      position: relative;
+      top: 15px;
       color: white;
       margin-right: 5vw;
       .navigationList {
+        // background: yellow;
         width: 100%;
         @include flex(row, space-between, center);
         height: 100%;

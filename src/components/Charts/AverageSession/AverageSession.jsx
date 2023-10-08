@@ -54,17 +54,19 @@ const AverageSession = ({ userAverageSession }) => {
   const COLOR = "#ffffffa4";
 
   function customMouseMove(e) {
+    //selecting de sessionDurationWrap
     let sessionWrap = document.querySelector(".sessionDurationWrap");
 
+    //verifier si l'info bulle est active. on verifie si l'utilisateur est sur le graphique
     if (e.isTooltipActive) {
-      let windowWidth = sessionWrap.offsetWidth;
+      let windowWidth = sessionWrap.offsetWidth; //recuperer la largeur de la fenetre
       let mouseXpercent = Math.floor(
         (e.activeCoordinate.x / windowWidth) * 100
-      );
+      ); //recuperer la position de la souris par rapport a la largeur de la fenetre
 
-      sessionWrap.style.background = `linear-gradient(90deg, rgba(255,0,0, 1) ${mouseXpercent}%, rgba(0,0,0,0.1) ${mouseXpercent}%, rgba(0,0,0,0.1) 100%)`;
+      sessionWrap.style.background = `linear-gradient(90deg, rgba(255,0,0, 1) ${mouseXpercent}%, rgba(0,0,0,0.1) ${mouseXpercent}%, rgba(0,0,0,0.1) 100%)`; //changer la couleur du background en fonction de la position de la souris
     } else {
-      sessionWrap.style.background = "transparent";
+      sessionWrap.style.background = "transparent"; //si l'utilisateur n'est pas sur le graphique, le background est transparent
     }
   }
 
@@ -78,24 +80,13 @@ const AverageSession = ({ userAverageSession }) => {
       <Rectangle
         fill="#000000"
         opacity={0.2}
-        x={points[1].x}
+        x={points[1].x} //x={points[1].x} : La propriété "x" définit la position horizontale du coin supérieur gauche du rectangle. Elle utilise la valeur "x" du deuxième point de l'objet "points" pour déterminer cette position.
         width={1000}
         height={300}
         className={styles.rectangle}
       />
     );
   };
-
-  //   function CustomToolTypeSessionDuration({payload, active}){
-  //     if(active){
-  //         return (
-  //             <div className='sessionDurationChartTooltip'>
-  //                 <div>{`${payload[0].value}`}min</div>
-  //             </div>
-  //         )
-  //     }
-  //     return null
-  // }
 
   return (
     <div className={styles.averageSession}>

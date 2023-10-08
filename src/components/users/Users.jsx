@@ -5,6 +5,7 @@ import styles from "./users.module.scss";
 
 const Users = () => {
   const UsersData = USER_MAIN_DATA;
+
   return (
     <ul className={styles.links}>
       {UsersData.map((UserData) => (

@@ -22,28 +22,6 @@ import Performance from "../../components/Charts/performance/Performance";
 import NutritionCard from "../../components/Charts/nutritionCard/NutritionCard";
 import { Icons } from "../../components/Icons";
 import ScoreChart from "../../components/Charts/score/ScoreChart";
-// import ActivityChart from "../../components/Charts/activity/ActivityChart";
-// import Performance from "../../components/Charts/performance/Performance";
-// import AverageSession from "../../components/Charts/session/AverageSession";
-// import NutritionCard from "../../components/Charts/nutritionCard/NutritionCard";
-// import {
-//   useFetchUserActivityData,
-//   useFetchUserAverageSession,
-//   useFetchUserData,
-//   useFetchUserPerformance,
-// } from "../../hooks/reactQueryCustomHooks";
-
-// import ActivityChart from "../../components/Charts/ActivityChart/ActivityChart";
-// import Performance from "../../components/Charts/performance/Performance";
-// import AverageSession from "../../components/Charts/AverageSession/AverageSession.jsx";
-// // import NutritionCard from "../../components/Charts/nutritionCard/NutritionCard";
-// // import {
-// //   useFetchUserActivityData,
-// //   useFetchUserAverageSession,
-// //   useFetchUserData,
-// //   useFetchUserPerformance,
-// // } from "../../hooks/reactQueryCustomHooks";
-// import { Icons } from "../../components/Icons";
 
 const User = () => {
   const navigate = useNavigate();
@@ -80,36 +58,6 @@ const User = () => {
     return <div>'Erreur lors du chargement des données utilisateur'.</div>;
   }
 
-  // console.log(
-  //   "🚀 ~ file: User.jsx:42 ~ User ~ userAverageSession:",
-  //   userAverageSession
-  // );
-
-  // console.log(
-  //   "🚀 ~ file: User.jsx:41 ~ User ~ userAverageSession:",
-  //   userAverageSession
-  // );
-
-  // const {
-  //   data: userPerformance,
-  //   isLoading: isUserPerformance,
-  //   isError: userPerformanceError,
-  // } = useQuery({
-  //   queryKey: ["userPerformance", id],
-  //   queryFn: async () => getuserPerformance(id),
-  // });
-  // console.log(
-  //   "🚀 ~ file: User.jsx:49 ~ User ~ userPerformance:",
-  //   userPerformance
-  // );
-
-  // if (isUserLoading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (userError) {
-  //   return <div>'Erreur lors du chargement des données utilisateur'.</div>;
-  // }
   //Old way to fetch data
   //   const [userData, setUserData] = useState();
   //   const [isLoading, setIsLoading] = useState(true);

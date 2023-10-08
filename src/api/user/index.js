@@ -15,8 +15,6 @@ const getUsersData = async () => {
 };
 const getUserData = async (id) => {
   try {
-    // const response = await axios.get(`${API_BASE_URL}/user/${id}`);
-    // return response.data;
     const { data } = await axios.get(`${API_BASE_URL}/user/${id}`);
     return data;
   } catch (error) {
@@ -29,8 +27,6 @@ const getUserData = async (id) => {
 
 const getUserActivityData = async (id) => {
   try {
-    // const response = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
-    // return response.data;
     const { data } = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
     return data;
   } catch (error) {
@@ -43,10 +39,6 @@ const getUserActivityData = async (id) => {
 
 const getUserAverageSession = async (id) => {
   try {
-    // const response = await axios.get(
-    //   `${API_BASE_URL}/user/${id}/average-sessions`
-    // );
-    // return response.data;
     const { data } = await axios.get(
       `${API_BASE_URL}/user/${id}/average-sessions`
     );
@@ -61,8 +53,6 @@ const getUserAverageSession = async (id) => {
 
 const getUserPerformance = async (id) => {
   try {
-    // const response = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
-    // return response.data;
     const { data } = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
     return data;
   } catch (error) {
