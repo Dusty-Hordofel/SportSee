@@ -9,7 +9,6 @@ import User from "./pages/user/User";
 function App() {
   return (
     <>
-      {/* <BrowserRouter> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profil" element={<Profil />} />
@@ -18,7 +17,6 @@ function App() {
         <Route path="/user/:id" element={<User />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      {/* </BrowserRouter> */}
     </>
   );
 }

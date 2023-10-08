@@ -1,12 +1,40 @@
 @import "/src/styles/main.scss";
 
+.charts {
+  display: flex;
+  gap: 31px;
+
+  .leftCharts {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    .bottomChart {
+      // display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+  }
+}
 h1 {
   font-size: 4.8rem;
   font-style: normal;
   font-weight: 500;
   line-height: 2.4rem;
   margin-bottom: 5rem;
+
   .title {
     color: $sportsee-primary-red;
   }
+}
+.message {
+  margin-bottom: 10rem;
+}
+
+.NutritionCards {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  margin-bottom: 10rem;
+  width: 25.8rem;
 }

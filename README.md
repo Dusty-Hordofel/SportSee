@@ -602,13 +602,408 @@ const User = () => {
 export default User;
 ```
 
-### 9.
+## Section 3: Charts
 
-### 10.
+### 9. ActivityChart
 
-### 11.
+- install [recharts](https://recharts.org/en-US/guide/installation)
+- create [getUserActivityData](src/api/user/index.js)
 
-### 12.
+```js
+const getUserActivityData = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}/activity`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+```
+
+- create [ActivityChart](src/components/Charts/ActivityChart/ActivityChart.jsx)
+
+```jsx
+import React from "react";
+
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Line,
+  ResponsiveContainer,
+} from "recharts";
+import styles from "./ActivityChart.module.scss";
+const xAxisTickFormat = (value) => {
+  const valueDay = value.split("-");
+
+  return Number(valueDay[2]);
+};
+
+const ActivityChart = ({ userActivityData }) => {
+  console.log(
+    "🚀 ~ file: ActivityChart.jsx:14 ~ ActivityChart ~ userActivityData:",
+    userActivityData.data.sessions
+  );
+  const { sessions } = userActivityData.data;
+  console.log(
+    "🚀 ~ file: ActivityChart.jsx:19 ~ ActivityChart ~ sessions:",
+    sessions
+  );
+
+  return (
+    <div className={styles.activityChart}>
+      <h1 className={styles.title}>Activité quotidienne </h1>
+      {/* <ResponsiveContainer width="100%" height="100%"> */}
+      <div style={{ width: "100%", height: "100%" }}>
+        <BarChart width={730} height={250} data={sessions}>
+          {/* <CartesianGrid horizontal={false} vertical={false} /> */}
+          <CartesianGrid
+            vertical="false"
+            strokeDasharray="3"
+            height={1}
+            horizontalPoints={[90, 185]}
+          />
+          <XAxis
+            dataKey="day"
+            tickFormatter={xAxisTickFormat}
+            // tickSize="0"
+            // interval="preserveStartEnd"
+            // tickMargin="25"
+            stroke="#9B9EAC"
+          />
+          <YAxis
+            axisLine={false}
+            orientation="right"
+            type="number"
+            tickSize="0"
+            tickMargin="30"
+            stroke="#9B9EAC"
+            // width={50}
+          />
+          <Tooltip />
+          <Legend
+            className={styles.activityLegend}
+            verticalAlign="top"
+            align="right"
+            height={80}
+            iconType="circle"
+            iconSize={8}
+            formatter={(value, entry, index) => (
+              <span className={styles.activityLegendColor}>{value}</span>
+            )}
+          />
+          <Bar
+            dataKey="kilogram"
+            fill="#282D30"
+            name="Poids (kg)"
+            barSize={7}
+            radius={[25, 25, 0, 0]}
+          />
+          <Bar
+            dataKey="calories"
+            fill="#E60000"
+            name="Calories brûlées (kCal)"
+            radius={[25, 25, 0, 0]}
+            barSize={7}
+          />
+        </BarChart>
+      </div>
+      {/* </ResponsiveContainer> */}
+    </div>
+  );
+};
+
+export default ActivityChart;
+```
+
+### 10. Average Session
+
+- create [getuserAverageSession,getuserPerformance](src/api/user/index.js)
+
+```js
+const getuserAverageSession = async (id) => {
+  try {
+    const response = await axios.get(
+      `${API_BASE_URL}/user/${id}/average-sessions`
+    );
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+
+const getuserPerformance = async (id) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/user/${id}/performance`);
+    return response.data;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+      error
+    );
+  }
+};
+```
+
+- create [AverageSession](src/components/Charts/AverageSession/AverageSession.jsx)
+
+```js
+import {
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  Line,
+  LineChart,
+} from "recharts";
+import PropTypes from "prop-types";
+import styles from "./AverageSession.module.scss";
+
+const xAxisFormatter = (day) => {
+  switch (day) {
+    case 1:
+      return "L";
+    case 2:
+      return "M";
+    case 3:
+      return "M";
+    case 4:
+      return "J";
+    case 5:
+      return "V";
+    case 6:
+      return "S";
+    case 7:
+      return "D";
+    default:
+      return "";
+  }
+};
+const AverageSession = ({ userAverageSession }) => {
+  console.log(
+    "🚀 ~ file: AverageSession.jsx:13 ~ AverageSession ~ userAverageSession:",
+    userAverageSession
+  );
+  const { sessions } = userAverageSession.data;
+  console.log(
+    "🚀 ~ file: AverageSession.jsx:18 ~ AverageSession ~ sessions:",
+    sessions
+  );
+
+  return (
+    <div className={styles.averageSession}>
+      <h1 className={styles.title}>Durée moyenne des sessions</h1>
+      <LineChart
+        width={730}
+        height={250}
+        data={sessions}
+        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+      >
+        <CartesianGrid horizontal={false} vertical={false} />
+
+        <YAxis
+          // dataKey="sessionLength"
+          hide="true"
+          domain={["dataMin", "dataMax"]}
+        />
+        <XAxis
+          dataKey="day"
+          type="category"
+          axisLine={false}
+          tickLine={false}
+          tick={{ fontSize: 12, fontWeight: 500 }}
+          tickFormatter={xAxisFormatter}
+          stroke="rgba(255, 255, 255, 0.5)"
+          tickMargin={40}
+        />
+        <Tooltip />
+        <Legend />
+        <Line
+          dataKey="sessionLength"
+          type="natural"
+          stroke="#FFFFFF"
+          dot={false}
+          strokeWidth={2}
+        />
+        {/* <Line type="monotone" dataKey="uv" stroke="#82ca9d" /> */}
+      </LineChart>
+    </div>
+  );
+};
+
+export default AverageSession;
+
+AverageSession.prototype = {
+  userAverageSession: PropTypes.object.isRequired,
+};
+```
+
+### 11. NutritionCard
+
+- create [nutritionCard](src/components/Charts/nutritionCard/NutritionCard.jsx)
+
+```js
+import PropTypes from "prop-types";
+// import { Icons } from "../../Icons";
+import styles from "./nutritionCard.module.scss";
+
+function NutritionCard({ id, Icon, keyDataSwitch, keyDataType }) {
+  return (
+    <div className={styles.nutritionCard} key={id}>
+      <Icon />
+      <div className={styles.nutritionCardText}>
+        <div className={styles.nutritionCardKeyData}>{keyDataSwitch}</div>
+        <div className={styles.nutritionCardKeyType}>{keyDataType}</div>
+      </div>
+    </div>
+  );
+}
+
+NutritionCard.propTypes = {
+  icon: PropTypes.string.isRequired,
+  keyDataSwitch: PropTypes.array.isRequired,
+  keyDataType: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};
+
+export default NutritionCard;
+```
+
+- style [nutritionCard](src/components/Charts/nutritionCard/nutritionCard.module.scss)
+
+```js
+.nutritionCard {
+  background-color: #fbfbfb;
+  gap: 2.4rem;
+  padding: 8%;
+  display: flex;
+  width: 100%;
+  height: 12.4rem;
+  border-radius: 0.5rem;
+}
+
+.nutritionCardIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.nutritionCardText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.nutritionCardKeyData {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nutritionCardKeyType {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+```
+
+### 12. Score
+
+- create [Score](src/components/Charts/score/ScoreChart.jsx)
+
+```jsx
+import React from "react";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
+import PropTypes from "prop-types";
+import styles from "./scoreChart.module.scss";
+
+function ScoreChart({ userData }) {
+  console.log(
+    "🚀 ~ file: ScoreChart.jsx:10 ~ ScoreChart ~ dataScore:",
+    userData
+  );
+
+  function formatScore(data) {
+    if (data.todayScore) {
+      data.score = data.todayScore;
+      delete data.todayScore;
+      return data;
+    }
+  }
+  // formatScore(userData);
+
+  formatScore(userData);
+  // console.log(userData);
+
+  function calculatePercentage(data) {
+    const score = Number(data.score);
+
+    return Math.round(score * 100);
+  }
+
+  const scorePercentage = calculatePercentage(userData);
+  const radialData = [{ name: "Score", score: userData.score }];
+  const score = [{ value: userData.score }, { value: 1 - userData.score }];
+
+  return (
+    <div className={styles.scoreChart}>
+      <ResponsiveContainer
+        width="100%"
+        height="100%"
+        style={{ display: "flex" }}
+      >
+        <PieChart width={160} height={160}>
+          <Pie
+            data={score}
+            dataKey="value"
+            innerRadius={70}
+            outerRadius={85}
+            startAngle={90}
+            endAngle={450}
+            // fill="#ff0000"
+            // fill="#8884d8"
+          >
+            {score.map((entry, index) =>
+              index === 0 ? (
+                <Cell key={`cell-${index}`} cornerRadius={10} fill="#FF0000" />
+              ) : (
+                <Cell key={`cell-${index}`} fill="#ffffff" />
+              )
+            )}
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+      <div className={styles.score}>
+        <div className={styles.scoreItem}>
+          <p className={styles.scoreResult}>{scorePercentage}%</p>
+          <p className={styles.scoreText}>
+            de votre
+            <br />
+            objectif
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ScoreChart.propTypes = {
+  userData: PropTypes.object.isRequired,
+};
+
+export default ScoreChart;
+```
 
 ### 13.
 
@@ -621,3 +1016,4 @@ export default User;
 ## External link
 
 - [prop-types](https://www.npmjs.com/package/prop-types)
+- [recharts](https://recharts.org/en-US/guide/installation)

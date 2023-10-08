@@ -1,0 +1,32 @@
+@import "/src/styles/main.scss";
+
+.averageSession {
+  background: $sportsee-primary-red;
+  border-radius: 5px;
+  width: fit-content;
+  padding: 2.4rem;
+  position: relative;
+  .title {
+    color: #fff;
+    font-size: 1.5rem;
+    width: fit-content;
+    padding: 2.4rem;
+    position: relative;
+  }
+  .tooltip {
+    display: flex;
+    width: 40px;
+    height: 25px;
+    background-color: #ffffff;
+    font-size: 8px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.rectangle {
+  background: brown;
+  width: 100%;
+  height: 100%;
+}

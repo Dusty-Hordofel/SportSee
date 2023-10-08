@@ -1,9 +1,14 @@
 @import "/src/styles/main.scss";
 
 .sidebar {
+  // background: green;
   background: black;
   @include flex(column, center, center);
   height: calc(100vh - 9.1rem);
+  position: relative;
+  top: 30px;
+
+  // height: 100%;
   width: 11.7rem;
   gap: 16.4rem;
 
