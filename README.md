@@ -1114,12 +1114,6 @@ export default Users;
 }
 ```
 
-### 14.
-
-### 15.
-
-### 16.
-
 ## External link
 
 - [prop-types](https://www.npmjs.com/package/prop-types)
