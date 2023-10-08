@@ -1005,7 +1005,114 @@ ScoreChart.propTypes = {
 export default ScoreChart;
 ```
 
-### 13.
+### 13. Fetch Users in development and in production Mode
+
+- fetch `usersData` in [Home](src/pages/home/Home.jsx)
+
+```js
+import React from "react";
+import Navbar from "../../components/navbar/Navbar";
+import Layout from "../../components/layout/Layout";
+import styles from "./home.module.scss";
+import Balancer from "react-wrap-balancer";
+import { USER_MAIN_DATA } from "../../data/mockedData";
+import Users from "../../components/users/Users";
+import { Link } from "react-router-dom";
+import { useFetchUsersData } from "../../hooks/reactQueryCustomHooks";
+
+const Home = () => {
+  const { usersData, usersError, isUsersLoading } = useFetchUsersData();
+  console.log("🚀 ~ file: Home.jsx:13 ~ Home ~ usersData:", usersData);
+
+  if (isUsersLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (usersError) {
+    return <div>'Erreur lors du chargement des données utilisateur'.</div>;
+  }
+
+  return (
+    <>
+      <h1>
+        Bienvenue sur{" "}
+        <span
+          arial-label="SportSee est le nom de la marque"
+          tabIndex={0}
+          className={styles.sportsee}
+        >
+          SportSee
+        </span>
+      </h1>
+      <p>
+        {/* <Balancer> */}
+        Projet 12 de la formation de développeur front-end d'
+        <span className={styles.openclassrooms}>
+          <Link to={"https://openclassrooms.com/fr/"}>OpenClassRoom</Link>
+        </span>
+        , cette démo met en avant le tableau de bord d'un utilisateur de l'application
+        SportSee, une startup dédiée au coaching sportif. En pleine croissance, l’entreprise
+        va aujourd’hui lancer une nouvelle version de la page profil de l’utilisateur.
+        Cette page va notamment permettre à l’utilisateur de suivre le nombre de
+        sessions réalisées ainsi que le nombre de calories brûlées.
+        {/* </Balancer> */}
+      </p>
+      <br />
+      <p className={styles.choice}>
+        Choisissez un utilisateur ci-dessous pour accéder au tableau de bord:
+      </p>
+
+      <div className={styles.users}>
+        <Users usersData={usersData} />
+      </div>
+    </>
+  );
+};
+
+export default Home;
+```
+
+- update [Users](src/components/users/Users.jsx) to fetch `Users` in `development` and `production` Mode.
+
+```js
+import React from "react";
+import { USER_MAIN_DATA } from "../../data/mockedData";
+import { Link } from "react-router-dom";
+import styles from "./users.module.scss";
+
+const Users = ({ usersData }) => {
+  let UsersData;
+
+  if (import.meta.env.DEV) {
+    // En mode de développement (local), utilisez les données locales (mockées)
+    UsersData = USER_MAIN_DATA;
+  } else {
+    // En production, utilisez les données de l'API réelle
+    UsersData = usersData;
+  }
+
+  return (
+    <ul className={styles.links}>
+      {UsersData.map((UserData) => (
+        <Link
+          to={`/user/${UserData.id}`}
+          key={UserData.id}
+          className={styles.link}
+          aria-label={`Aller sur le profil de ${UserData.userInfos.firstName}`}
+        >
+          <li> Je veux être {UserData.userInfos.firstName}</li>
+        </Link>
+      ))}
+    </ul>
+  );
+};
+
+export default Users;
+
+{
+  /* {JSON.stringify(import.meta.env.VITE_REACT_API_BASE_URL)} */
+}
+```
 
 ### 14.
 

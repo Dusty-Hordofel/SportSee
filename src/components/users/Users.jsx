@@ -3,8 +3,16 @@ import { USER_MAIN_DATA } from "../../data/mockedData";
 import { Link } from "react-router-dom";
 import styles from "./users.module.scss";
 
-const Users = () => {
-  const UsersData = USER_MAIN_DATA;
+const Users = ({ usersData }) => {
+  let UsersData;
+
+  if (import.meta.env.DEV) {
+    // En mode de développement (local), utilisez les données locales (mockées)
+    UsersData = USER_MAIN_DATA;
+  } else {
+    // En production, utilisez les données de l'API réelle
+    UsersData = usersData;
+  }
 
   return (
     <ul className={styles.links}>
@@ -23,3 +31,7 @@ const Users = () => {
 };
 
 export default Users;
+
+{
+  /* {JSON.stringify(import.meta.env.VITE_REACT_API_BASE_URL)} */
+}

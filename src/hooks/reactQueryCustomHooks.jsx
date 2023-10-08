@@ -4,7 +4,28 @@ import {
   getUserAverageSession,
   getUserData,
   getUserPerformance,
+  getUsersData,
 } from "../api/user";
+
+export const useFetchUsersData = () => {
+  const {
+    data: usersData,
+    isLoading: isUsersLoading,
+    isError: usersError,
+  } = useQuery({
+    queryKey: ["usersData"],
+    queryFn: async () => {
+      const data = await getUsersData();
+      console.log(
+        "🚀 ~ file: reactQueryCustomHooks.jsx:19 ~ queryFn: ~ data:",
+        data
+      );
+      return data;
+    },
+  });
+
+  return { usersData, usersError, isUsersLoading };
+};
 
 //user data
 export const useFetchUserData = (id) => {

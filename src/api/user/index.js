@@ -2,10 +2,32 @@ import axios from "axios";
 // const API_BASE_URL = "http://localhost:5173/";
 const API_BASE_URL = "http://localhost:3008";
 
+// const getUsersData = async () => {
+//   try {
+//     const response = await axios.get(`${API_BASE_URL}/user`);
+//     return response.data;
+//   } catch (error) {
+//     console.log(
+//       "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
+//       error
+//     );
+//   }
+// };
 const getUsersData = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/user`);
-    return response.data;
+    const userIds = [18, 12]; // Les ID des utilisateurs que vous souhaitez fetcher
+    const usersData = [];
+    for (const id of userIds) {
+      const { data } = await getUserData(id);
+      usersData.push(data);
+    }
+
+    console.log(
+      "🚀 ~ file: index.js:19 ~ getUsersData ~ usersData:",
+      usersData
+    );
+
+    return usersData;
   } catch (error) {
     console.log(
       "🚀 ~ file: index.js:15 ~ getUsersData ~ error:Erreur lors de la récupération des données",
